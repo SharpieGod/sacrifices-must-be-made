@@ -1,16 +1,19 @@
 using System;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
-{
+{   
     public float speed = 5f;
     public float jumpStrength = 300f;
     public float gravityUp = 60f;
     public float gravityDown = 1.0f;
     public float maxHealth = 100f;
     public float health;
+    public int jumpsLeft = 1;
 
     public GameObject groundDetector;
     public LayerMask groundLayer;
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
                 jumpAvailable = false;
                 coyoteTimer = 0f;
+                jumpsLeft--;
             }
         }
 
@@ -76,6 +80,11 @@ public class PlayerController : MonoBehaviour
         float airFactor = grounded ? 1f : 0.6f;
 
         rb.AddForce(new Vector2(direction * speed * airFactor * Time.deltaTime * 1000f, 0f));
+        
+        if (jumpsLeft <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -87,5 +96,11 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.GetComponent<Door>().Exit();
         }
+    }
+
+    private void Die()
+    {
+        gameObject.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
