@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpStrength = 300f;
-
+    public float gravityUp = 60f;
+    public float gravityDown = 1.0f;
     public float maxHealth = 100f;
     public float health;
 
@@ -53,14 +54,14 @@ public class PlayerController : MonoBehaviour
             coyoteTimer -= Time.deltaTime;
         }
 
-        rb.gravityScale = rb.linearVelocity.y > 0 ? 10f : 40f;
+        rb.gravityScale = grounded ? 1 : rb.linearVelocity.y > 0 ? gravityUp : gravityDown;
 
         if (jumpInput.WasPerformedThisFrame())
         {
             if (coyoteTimer > 0f && jumpAvailable)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-                rb.AddForce(Vector2.up * jumpStrength);
+                rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
                 jumpAvailable = false;
                 coyoteTimer = 0f;
             }
