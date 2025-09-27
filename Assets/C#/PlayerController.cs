@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -6,15 +7,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
-{   
+{
+    public TextMeshProUGUI text;
     public float speed = 5f;
     public float jumpStrength = 300f;
     public float gravityUp = 60f;
     public float gravityDown = 1.0f;
-    public float maxHealth = 100f;
-    public float health;
     public int jumpsLeft = 1;
-
+    public int initialJumps = 3;
     public GameObject groundDetector;
     public LayerMask groundLayer;
 
@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
 
         horizontalInput.Enable();
         jumpInput.Enable();
+        jumpsLeft = initialJumps;
     }
 
     void Update()
@@ -81,10 +81,11 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(new Vector2(direction * speed * airFactor * Time.deltaTime * 1000f, 0f));
         
-        if (jumpsLeft <= 0)
+        if (jumpsLeft < 0)
         {
             Die();
         }
+        text.text = jumpsLeft.ToString() + "/" + initialJumps.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
