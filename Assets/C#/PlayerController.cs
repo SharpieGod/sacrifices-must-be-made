@@ -39,13 +39,12 @@ public class PlayerController : MonoBehaviour
         float airFactor = grounded ? 1 : 0.8f;
 
         rb.AddForce(new Vector2(direction * Time.deltaTime * speed * airFactor * 1000, 0));
-
-        Debug.Log(rb.totalForce.x + " " + direction);
         
     }
 
-    private void Test(InputAction.CallbackContext context)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(context.ReadValue<float>());
+        Button b = collision.gameObject.GetComponent<Button>();
+        if (b) b.TriggerButton();
     }
 }
