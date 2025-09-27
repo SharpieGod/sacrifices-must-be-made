@@ -11,9 +11,16 @@ public class Door : MonoBehaviour
         
     }
 
-    public void Exit()
-    {
+    public void Exit() {
+        StartCoroutine(ExitRoutine());
+    }
+    private IEnumerator ExitRoutine() {
+        animator.SetTrigger("exit");
+
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("Exit"));
+
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
         sceneManager.GoToMenu();
     }
-
 }
