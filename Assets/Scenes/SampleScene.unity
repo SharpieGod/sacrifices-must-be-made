@@ -214,6 +214,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619666613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 600192808615122745, guid: 334ccd296c61e8a45ba8b0a129448ca4, type: 3}
+  m_PrefabInstance: {fileID: 7848394177373377706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &873471294
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +651,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577010427433538082, guid: d290b58ba7821864ba68571e6b2066d0, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 619666613}
     - target: {fileID: 7441066116678648635, guid: d290b58ba7821864ba68571e6b2066d0, type: 3}
       propertyPath: m_Name
       value: Player
@@ -971,10 +986,6 @@ PrefabInstance:
     - target: {fileID: 2722037733302038067, guid: 334ccd296c61e8a45ba8b0a129448ca4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7227779081172615740, guid: 334ccd296c61e8a45ba8b0a129448ca4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 453
       objectReference: {fileID: 0}
     - target: {fileID: 7412931087944310885, guid: 334ccd296c61e8a45ba8b0a129448ca4, type: 3}
       propertyPath: m_Name
