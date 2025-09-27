@@ -172,7 +172,7 @@ MonoBehaviour:
   groundDetector: {fileID: 6021778369843972503}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   horizontalInput:
     m_Name: Horizontal Input
     m_Type: 0
