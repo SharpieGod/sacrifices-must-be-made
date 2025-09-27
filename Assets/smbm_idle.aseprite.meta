@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: smbm_idle
     originalName: 
-    pivot: {x: 0.5, y: 0.023809524}
+    pivot: {x: 0.5, y: 0.02173913}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -138,8 +138,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 64
-      height: 42
-    spriteID: 54fa8202560e3cd4c9cd52bedd6994c7
+      height: 46
+    spriteID: 80fbc698713e2554b9426f5ea1dc0bec
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,8 +170,8 @@ ScriptedImporter:
         x: 0
         y: -1
         width: 64
-        height: 42
-      spriteId: 54fa8202560e3cd4c9cd52bedd6994c7
+        height: 46
+      spriteId: 80fbc698713e2554b9426f5ea1dc0bec
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
