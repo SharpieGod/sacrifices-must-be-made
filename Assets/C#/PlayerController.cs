@@ -82,5 +82,10 @@ public class PlayerController : MonoBehaviour
     {
         Button b = collision.gameObject.GetComponent<Button>();
         if (b) b.TriggerButton();
+
+        if (collision.gameObject.CompareTag("Exit"))
+        {
+            collision.gameObject.GetComponent<Door>().Exit();
+        }
     }
 }

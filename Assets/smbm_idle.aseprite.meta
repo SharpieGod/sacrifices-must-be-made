@@ -82,7 +82,7 @@ ScriptedImporter:
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
-    addSortingGroup: 1
+    addSortingGroup: 0
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
@@ -97,12 +97,12 @@ ScriptedImporter:
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
-    addSortingGroup: 1
+    addSortingGroup: 0
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638945800830710889
+  platformSettingsDirtyTick: 638945821210536240
   textureAssetName: 
   singleSpriteImportData:
   - name: 
