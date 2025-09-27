@@ -25,6 +25,5 @@ public class Button : MonoBehaviour
     {
         float smoothing = 5f;
         transform.position = Vector2.Lerp(transform.position, targetPosition, 1 - Mathf.Exp(-smoothing * Time.deltaTime));
-
     }
 }
