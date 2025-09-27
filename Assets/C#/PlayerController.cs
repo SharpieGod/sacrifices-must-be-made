@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         grounded = Physics2D.CircleCastAll(
             groundDetector.transform.position,
-            0.4f,
+            0.7f,
             Vector2.down,
             0,
             groundLayer
