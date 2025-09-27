@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         grounded = Physics2D.CircleCastAll(groundDetector.transform.position, 0.4f, Vector2.right, 0, groundLayer).Length > 0;
-
+        var gravityFactor = rb.linearVelocityY > 0 ? 10 : 40;
+        rb.gravityScale = gravityFactor;
         if (grounded && jumpInput.WasPerformedThisFrame())
         {
             rb.AddForce(new Vector2(0, jumpStrength));
@@ -36,20 +37,11 @@ public class PlayerController : MonoBehaviour
 
         var direction = horizontalInput.ReadValue<float>();
         float airFactor = grounded ? 1 : 0.8f;
+
         rb.AddForce(new Vector2(direction * Time.deltaTime * speed * airFactor * 1000, 0));
 
+        Debug.Log(rb.totalForce.x + " " + direction);
         
-        if(horizontalInput.WasPerformedThisFrame())
-        {
-            if (Math.Sign(direction) != Math.Sign(rb.totalForce.x))
-            {
-                Debug.Log("Swapped");
-                rb.AddForce(new Vector2(-rb.totalForce.x * 3/2, 0));
-            }
-        }
-
-
-    
     }
 
     private void Test(InputAction.CallbackContext context)
