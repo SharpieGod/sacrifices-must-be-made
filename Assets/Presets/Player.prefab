@@ -165,14 +165,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 15
-  jumpStrength: 5000
+  jumpStrength: 100
+  gravityUp: 1
+  gravityDown: 45
   maxHealth: 100
   health: 100
-  grounded: 1
   groundDetector: {fileID: 6021778369843972503}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   horizontalInput:
     m_Name: Horizontal Input
     m_Type: 0

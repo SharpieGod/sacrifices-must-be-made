@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     float coyoteTimer = 0f;
 
     bool jumpAvailable = true;
+
 
     void Start()
     {
@@ -59,7 +61,10 @@ public class PlayerController : MonoBehaviour
         if (jumpInput.WasPerformedThisFrame())
         {
             if (coyoteTimer > 0f && jumpAvailable)
-            {
+            { 
+                var audioSource = GetComponent<AudioSource>();
+                audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                audioSource.Play();
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
                 jumpAvailable = false;
@@ -68,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
 
         float direction = horizontalInput.ReadValue<float>();
-        float airFactor = grounded ? 1f : 0.8f;
+        float airFactor = grounded ? 1f : 0.6f;
 
         rb.AddForce(new Vector2(direction * speed * airFactor * Time.deltaTime * 1000f, 0f));
     }
