@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
@@ -30,13 +31,25 @@ public class PlayerController : MonoBehaviour
     bool jumpAvailable = true;
 
 
-    void Start()
+    //void Awake()
+    //{
+    //    rb = GetComponent<Rigidbody2D>();
+
+    //    jumpsLeft = initialJumps;
+    //    coyoteTime = 0;
+    //    jumpAvailable = false;
+    //    grounded = false;
+    //}
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        jumpsLeft = initialJumps;
+        coyoteTimer = 0;
+        //jumpAvailable = false;
+        grounded = false;
         horizontalInput.Enable();
         jumpInput.Enable();
-        jumpsLeft = initialJumps;
     }
 
     void Update()
@@ -61,10 +74,10 @@ public class PlayerController : MonoBehaviour
 
         rb.gravityScale = grounded ? 1 : rb.linearVelocity.y > 0 ? gravityUp : gravityDown;
 
-        if (jumpInput.WasPerformedThisFrame())
+        if (jumpInput.WasPerformedThisFrame() && Time.timeSinceLevelLoad>0.2f)
         {
             if (coyoteTimer > 0f && jumpAvailable)
-            { 
+            {
                 var audioSource = GetComponent<AudioSource>();
                 audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                 audioSource.Play();
@@ -72,6 +85,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
                 jumpAvailable = false;
                 coyoteTimer = 0f;
+
                 jumpsLeft--;
             }
         }
@@ -85,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+
         text.text = jumpsLeft.ToString() + "/" + initialJumps.ToString();
     }
 
@@ -101,7 +116,13 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        StartCoroutine(DieProcess());
         gameObject.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator DieProcess()
+    {
+        yield return new WaitForEndOfFrame();
     }
 }
