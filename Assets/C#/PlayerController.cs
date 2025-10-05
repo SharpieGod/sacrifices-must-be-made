@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using TMPro;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float jumpStrength = 300f;
     public float gravityUp = 60f;
     public float gravityDown = 1.0f;
-    public int jumpsLeft = 1;
+    public int jumpsLeft = 3;
     public int initialJumps = 3;
     public GameObject groundDetector;
     public LayerMask groundLayer;

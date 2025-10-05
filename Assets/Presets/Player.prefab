@@ -197,12 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add01423c11715b4d905578fae103afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  text: {fileID: 0}
   speed: 15
   jumpStrength: 100
   gravityUp: 1
   gravityDown: 45
-  maxHealth: 100
-  health: 100
+  jumpsLeft: 1
+  initialJumps: 3
   groundDetector: {fileID: 6021778369843972503}
   groundLayer:
     serializedVersion: 2
